@@ -2,9 +2,9 @@ class DiaryEntry{
   late int _id;
   late String _content;
 
-  DiaryEntry(String s){
-    _content = s;
-    _id = 0
+  DiaryEntry(){
+    _content = "";
+    _id = 0;
   }
 
   String getContent(){
