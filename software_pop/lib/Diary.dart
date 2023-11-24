@@ -7,6 +7,10 @@ class DiaryEntry{
     _id = 0;
   }
 
+  void setContent(String c){
+    this._content = c;
+  }
+
   String getContent(){
     return _content;
   }
