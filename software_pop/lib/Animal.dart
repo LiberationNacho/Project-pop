@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Animal {
   String _name = "";
   int _hunger = 0; // 허기진 정도를 나타내는 변수
