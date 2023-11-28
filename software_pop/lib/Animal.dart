@@ -1,8 +1,8 @@
-// import 'package:flutter/material.dart';
-
+import 'package:flutter/material.dart';
+/*
 class Animal {
   String _name = "";
-  int _hunger = 0; // 허기진 정도를 나타내는 변수
+  int _fulless = 0; // 포만감을 나타내는 변수
 
   void setName(String n) {
     this._name = n;
@@ -13,13 +13,13 @@ class Animal {
   }
 
   bool isHungry() {
-    return this._hunger < 20;
+    return this._fulless < 20;
   }
 
   void eat() {
     if (isHungry()) {
       _hunger = 0;
-      print("$_name is eating. Hunger level: $_hunger");
+      print("$_name is eating. Hunger level: $_fulless");
     } else {
       print("$_name is not hungry.");
     }
@@ -34,7 +34,7 @@ class Animal {
   }
 
   void displayInfo() {
-    print("Name: $_name, Hunger: $_hunger");
+    print("Name: $_name, Hunger: $_fulless");
   }
 }
 
@@ -68,16 +68,16 @@ class AnimalUI {
     }
   }
 }
+*/
 
-/*
 void main() {
   runApp(const MyApp());
 }
 
 // 동물을 나타내는 클래스
 class Animal {
-  String _name = "Buddy";
-  int _hunger = 0;
+  String _name = "PopCat";
+  int _fullless = 0;
 
   // 동물의 이름을 설정하는 메서드
   void setName(String name) {
@@ -86,8 +86,8 @@ class Animal {
 
   // 동물이 먹는 메서드
   void eat() {
-    _hunger = 0;
-    print("$_name is eating. Hunger level: $_hunger");
+    _fullless = 100;
+    print("$_name is eating. Hunger level: $_fullless");
   }
 
   // 동물이 자는 메서드
@@ -102,7 +102,7 @@ class Animal {
 
   // 동물의 정보를 출력하는 메서드
   void displayInfo() {
-    print("Name: $_name, Hunger: $_hunger");
+    print("Name: $_name, Hunger: $_fullless");
   }
 }
 
@@ -171,19 +171,19 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: _interactWithPet,
-              child: const Text('Interact'),
+              child: const Text('상호작용'),
             ),
             ElevatedButton(
               onPressed: _feedPet,
-              child: const Text('Feed'),
+              child: const Text('먹이 주기'),
             ),
             ElevatedButton(
               onPressed: _putPetToSleep,
-              child: const Text('Sleep'),
+              child: const Text('재우기'),
             ),
             ElevatedButton(
               onPressed: _playWithPet,
-              child: const Text('Play'),
+              child: const Text('놀아주기'),
             ),
           ],
         ),
@@ -191,4 +191,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
- */
