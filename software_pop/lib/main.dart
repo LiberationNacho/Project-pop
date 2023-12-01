@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Home Page about give me rice'),
+      home: const MyHomePage(title: '아 진짜 우째 살아야 하지?'),
     );
   }
 }
