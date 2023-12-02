@@ -1,182 +1,30 @@
 import 'package:flutter/material.dart';
-/*
+
+void main() {
+  runApp(MyApp());
+}
 
 class Animal {
-  String _name = "";
-  int _fulless = 0; // 포만감을 나타내는 변수
+  String petStatus = ''; // 동물 상태를 저장하는 변수
 
-  void setName(String n) {
-    this._name = n;
-  }
-
-  String getName() {
-    return this._name;
-  }
-
-  bool isHungry() {
-    return this._fulless < 20;
+  void displayInfo() {
+    petStatus = 'Animal info';
+    print(petStatus);
   }
 
   void eat() {
-    if (isHungry()) {
-      _hunger = 0;
-      print("$_name is eating. Hunger level: $_fulless");
-    } else {
-      print("$_name is not hungry.");
-    }
+    petStatus = 'Animal is eating';
+    print(petStatus);
   }
 
   void sleep() {
-    print("$_name is sleeping.");
+    petStatus = 'Animal is sleeping';
+    print(petStatus);
   }
 
   void play() {
-    print("$_name is playing.");
-  }
-
-  void displayInfo() {
-    print("Name: $_name, Hunger: $_fulless");
-  }
-}
-
-class AnimalUI {
-  late Animal _ani;
-
-  // 생성자
-  AnimalUI(Animal animal) {
-    _setAni(animal);
-  }
-
-  // _ani에 접근하기 위한 게터
-  Animal get animal => _ani;
-
-  // _ani를 설정하기 위한 세터
-  void _setAni(Animal a) {
-    _ani = a;
-  }
-
-  void displayAniInfo() {
-    _ani.displayInfo();
-  }
-
-  // 동물과 상호 작용하는 메서드
-  void interactWithAni() {
-    _ani.displayInfo();
-    if (_ani.isHungry()) {
-      print("${_ani.getName()} is hungry. You can feed it!");
-    } else {
-      print("${_ani.getName()} is not hungry. You can play with it!");
-    }
-  }
-}
-
-/*
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'give me rice',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: '아 진짜 우째 살아야 하지?'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
-*/
-*/
-
-void main() {
-  runApp(const MyApp());
-}
-
-// 동물을 나타내는 클래스
-class Animal {
-  String _name = "PopCat";
-  int _fullless = 0;
-
-  // 동물의 이름을 설정하는 메서드
-  void setName(String name) {
-    _name = name;
-  }
-
-  // 동물이 먹는 메서드
-  void eat() {
-    _fullless = 100;
-    print("$_name is eating. Hunger level: $_fullless");
-  }
-
-  // 동물이 자는 메서드
-  void sleep() {
-    print("$_name is sleeping.");
-  }
-
-  // 동물이 놀기 메서드
-  void play() {
-    print("$_name is playing.");
-  }
-
-  // 동물의 정보를 출력하는 메서드
-  void displayInfo() {
-    print("Name: $_name, Hunger: $_fullless");
+    petStatus = 'Animal is playing';
+    print(petStatus);
   }
 }
 
@@ -206,28 +54,43 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Animal myPet = Animal();
+  String currentImage = 'images/popcat.jpg';
 
   // 동물과 상호 작용하는 메서드
   void _interactWithPet() {
-    myPet.displayInfo();
+    setState(() {
+      myPet.displayInfo();
+    });
   }
 
   // 동물에게 먹이 주기
   void _feedPet() {
-    myPet.eat();
-    myPet.displayInfo();
+    setState(() {
+      myPet.eat();
+    });
   }
 
   // 동물을 재우기
   void _putPetToSleep() {
-    myPet.sleep();
-    myPet.displayInfo();
+    setState(() {
+      myPet.sleep();
+    });
   }
 
   // 동물과 놀기
   void _playWithPet() {
-    myPet.play();
-    myPet.displayInfo();
+    setState(() {
+      myPet.play();
+    });
+  }
+
+  // 이미지 변경 메서드
+  void _changeImage() {
+    setState(() {
+      currentImage = (currentImage == 'images/popcat.jpg')
+          ? 'images/popcat2.jpg'
+          : 'images/popcat.jpg';
+    });
   }
 
   @override
@@ -243,22 +106,39 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'Click the buttons to interact with your pet:',
             ),
+            SizedBox(height: 20), // 버튼 위 간격
+            // GestureDetector를 사용하여 이미지 클릭 감지
+            GestureDetector(
+              onTap: _changeImage,
+              child: Image.asset(
+                currentImage,
+                width: 200,
+                height: 200,
+              ),
+            ),
+            SizedBox(height: 20), // 이미지와 버튼 간 간격
             ElevatedButton(
               onPressed: _interactWithPet,
               child: const Text('상호작용'),
             ),
+            SizedBox(height: 10), // 버튼 간격 조절
             ElevatedButton(
               onPressed: _feedPet,
               child: const Text('먹이 주기'),
             ),
+            SizedBox(height: 10), // 버튼 간격 조절
             ElevatedButton(
               onPressed: _putPetToSleep,
               child: const Text('재우기'),
             ),
+            SizedBox(height: 10), // 버튼 간격 조절
             ElevatedButton(
               onPressed: _playWithPet,
               child: const Text('놀아주기'),
             ),
+            SizedBox(height: 20), // 버튼 아래 간격
+            // 추가: 동물 상태를 표시하는 Text 위젯
+            Text(myPet.petStatus),
           ],
         ),
       ),
