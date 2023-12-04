@@ -35,7 +35,7 @@ class StoreGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 5, // 열의 개수
+        crossAxisCount: 3, // 열의 개수
       ),
       itemBuilder: (BuildContext context, int index) {
         // 여기서 각 버튼을 만들어서 반환
