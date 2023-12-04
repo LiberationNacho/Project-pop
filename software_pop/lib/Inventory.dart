@@ -11,54 +11,105 @@ class Inventory {
   void chooseItem(int num) {
     _selectItem = num;
   }
+
+  int getStoreName()
+  {
+    return _storeName;
+  }
+
+  int getSelectItem()
+  {
+    return _selectItem;
+  }
 }
 
 class InventoryUI extends StatelessWidget {
+  final Inventory inventory = Inventory(); // Inventory 객체를 멤버 변수로 선언
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Inventory UI'),
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Inventory UI'),
+            bottom: TabBar(
+              tabs: [
+                Tab(text: '옷'),
+                Tab(text: '가구'),
+                Tab(text: '음악 상점'),
+              ],
+              onTap: (index) {
+                // 탭이 클릭되었을 때 chooseStoreName 함수 호출
+                inventory.chooseStoreName(index);
+              },
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              InventoryGrid(Colors.blue, inventory), // InventoryGrid에 Inventory 객체 전달
+              InventoryGrid(Colors.green, inventory),
+              InventoryGrid(Colors.orange, inventory),
+            ],
+          ),
         ),
-        body: InventoryGrid(),
       ),
     );
   }
 }
 
 class InventoryGrid extends StatelessWidget {
+  final Color buttonColor;
+  final Inventory inventory; // Inventory 객체를 전달받도록 수정
+
+  InventoryGrid(this.buttonColor, this.inventory);
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3, // 열의 개수
+        crossAxisCount: 3,
       ),
       itemBuilder: (BuildContext context, int index) {
-        // 여기서 각 버튼을 만들어서 반환
-        return InventoryButton(index);
+        return InventoryButton(index, buttonColor, inventory); // InventoryButton에 Inventory 객체 전달
       },
-      itemCount: 15, // 총 버튼의 개수 (3x5)
+      itemCount: 15,
     );
   }
 }
 
 class InventoryButton extends StatelessWidget {
   final int index;
+  final Color buttonColor;
+  final Inventory inventory; // Inventory 객체를 전달받도록 수정
 
-  InventoryButton(this.index);
+  InventoryButton(this.index, this.buttonColor, this.inventory);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         // 버튼이 눌렸을 때 실행되는 코드
-        print('Button $index pressed.');
+        int storeCheck = inventory.getStoreName(); // inventory 객체 사용
+        switch(storeCheck)
+        {
+          case 0:
+            print("옷 탭의 $index 번 버튼을 누르셨습니다.");
+            break;
+          case 1:
+            print("가구 탭의 $index 번 버튼을 누르셨습니다.");
+            break;
+          case 2:
+            print("음악 탭의 $index 번 버튼을 누르셨습니다.");
+            break;
+          default:
+        }
         // 여기서 필요한 로직을 추가하세요.
       },
       child: Container(
         margin: EdgeInsets.all(8.0),
-        color: Colors.blue, // 버튼 색상
+        color: buttonColor,
         child: Center(
           child: Text(
             'Item $index',
