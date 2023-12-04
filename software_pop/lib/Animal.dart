@@ -17,17 +17,19 @@ class Animal {
   CatState catState = CatState.Awake;
 
   void displayInfo() {
-    petStatus = 'Animal info';
+    petStatus = 'popcat이 즐거워 합니다';
     print(petStatus);
   }
 
   void eat() {
-    petStatus = 'Animal is eating';
+    petStatus = '츄르';
+    hungry += 10;
+    if (hungry > 100) hungry = 100;
     print(petStatus);
   }
 
   void sleep() {
-    petStatus = 'Animal is sleeping';
+    petStatus = 'popcat이 자고 있습니다';
     print(petStatus);
   }
 
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: MyHomePage(title: 'Pet Simulator Home'),
+      home: MyHomePage(title: 'Pet Simulator'),
     );
   }
 }
@@ -114,10 +116,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void _feedPet() {
     setState(() {
       myPet.eat();
-      myPet.hungry += 10;
-      if (myPet.hungry > 100) {
-        myPet.hungry = 100;
-      }
       _increaseAffection(1);
     });
   }
@@ -160,30 +158,43 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Click the buttons to interact with your pet:',
+              '아 진짜 우쨰 살아야 하지',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // 원하는 크기로 조절
             ),
             SizedBox(height: 10), // 버튼 위 간격
             // 추가: 동물 상태와 공복지수, 친밀도를 표시하는 Text 위젯
-            Text(myPet.petStatus),
-            Text('Hungry: ${myPet.hungry}'),
-            Text('Affection: ${myPet.affection}'),
-            Text('Cat State: ${myPet.catState}'),
-            SizedBox(height: 20), // 이미지와 버튼 간 간격
-            // GestureDetector를 사용하여 이미지 클릭 감지
+            Text(
+              myPet.petStatus,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // 원하는 크기로 조절
+            ),
+            Text(
+              'Hungry: ${myPet.hungry}',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // 원하는 크기로 조절
+            ),
+            Text(
+              'Affection: ${myPet.affection}',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // 원하는 크기로 조절
+            ),
+            Text(
+              'Cat State: ${myPet.catState}',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // 원하는 크기로 조절
+            ),
+            SizedBox(height: 10), // 이미지와 버튼 간 간격
+// GestureDetector를 사용하여 이미지 클릭 감지
             GestureDetector(
               onTap: _changeImage,
               child: Image.asset(
                 currentImage,
-                width: 200,
-                height: 200,
+                width: 300,
+                height: 300,
               ),
             ),
             SizedBox(height: 20), // 이미지와 버튼 간 간격
-            // 밤 10시부터 아침 6시까지 잠자기 상태인 경우 "동물 잠잠" 메시지 표시
+            // 밤 10시부터 아침 6시까지 잠자기 상태인 경우 "동물 잠자는 중" 메시지 표시
             if (myPet.catState == CatState.Sleeping)
               Text(
-                '동물 잠잠',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                'popcat이 자고 있습니다.',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // 원하는 크기로 조절
               ),
             // 가로로 정렬된 버튼들
             Row(
@@ -196,7 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(width: 10), // 버튼 간격 조절
                 ElevatedButton(
                   onPressed: _feedPet,
-                  child: const Text('먹이 주기'),
+                  child: const Text('먹이주기'),
                 ),
                 SizedBox(width: 10), // 버튼 간격 조절
                 ElevatedButton(
