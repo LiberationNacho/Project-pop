@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="iOxjJp5X3Sz12MZ-F4bf" name="Page-1">
-        <mxGraphModel dx="1589" dy="1240" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2480" dy="1570" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -167,10 +167,10 @@
                     <mxGeometry y="192" width="810" height="34" as="geometry"/>
                 </mxCell>
                 <mxCell id="282" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="-352.5" y="290" width="1272.5" height="770" as="geometry"/>
+                    <mxGeometry x="-210" y="290" width="1400" height="900" as="geometry"/>
                 </mxCell>
                 <mxCell id="283" value="AnimalSimulator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=20;" vertex="1" parent="1">
-                    <mxGeometry x="-335" y="640" width="400" height="402" as="geometry"/>
+                    <mxGeometry x="-190" y="344" width="400" height="402" as="geometry"/>
                 </mxCell>
                 <mxCell id="284" value="- myPet: Animal" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="283">
                     <mxGeometry y="30" width="400" height="40" as="geometry"/>
@@ -209,7 +209,7 @@
                     <mxGeometry x="166.88" y="300" width="166.25" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="288" value="Animal" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=20;" vertex="1" parent="1">
-                    <mxGeometry x="-330" y="340" width="390" height="278" as="geometry"/>
+                    <mxGeometry x="-190" y="870" width="390" height="278" as="geometry"/>
                 </mxCell>
                 <mxCell id="289" value="-petStatus: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="288">
                     <mxGeometry y="30" width="390" height="26" as="geometry"/>
@@ -239,7 +239,7 @@
                     <mxGeometry y="244" width="390" height="34" as="geometry"/>
                 </mxCell>
                 <mxCell id="296" value="MyHomePage" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=20;" vertex="1" parent="1">
-                    <mxGeometry x="90" y="340" width="810" height="118" as="geometry"/>
+                    <mxGeometry x="360" y="350" width="810" height="118" as="geometry"/>
                 </mxCell>
                 <mxCell id="297" value="- title : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="296">
                     <mxGeometry y="30" width="810" height="40" as="geometry"/>
@@ -250,8 +250,11 @@
                 <mxCell id="298" value="- createState(): Void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="296">
                     <mxGeometry y="78" width="810" height="40" as="geometry"/>
                 </mxCell>
+                <mxCell id="329" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.473;entryY=1.138;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="302" target="298">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="302" value="_MyHomePageState" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=20;" vertex="1" parent="1">
-                    <mxGeometry x="90" y="490" width="810" height="470" as="geometry"/>
+                    <mxGeometry x="350" y="700" width="810" height="470" as="geometry"/>
                 </mxCell>
                 <mxCell id="303" value="- myPet: Animal" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="302">
                     <mxGeometry y="30" width="810" height="40" as="geometry"/>
@@ -291,6 +294,12 @@
                 </mxCell>
                 <mxCell id="317" value="+ build(): Void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="302">
                     <mxGeometry y="436" width="810" height="34" as="geometry"/>
+                </mxCell>
+                <mxCell id="330" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.003;entryY=-0.074;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="297" target="286">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="331" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="324" target="288">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
