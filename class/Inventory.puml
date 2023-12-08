@@ -1,0 +1,32 @@
+@startuml
+class Inventory {
+  - _storeName: int
+  - _selectItem: int
+
+  + chooseStoreName(num: int): void
+  + chooseItem(num: int): void
+  + getStoreName(): int
+  + getSelectItem(): int
+}
+
+class InventoryScreen {
+  - inventory: Inventory
+
+  + InventoryScreen()
+}
+
+class InventoryGrid {
+  - buttonColor: Color
+  - inventory: Inventory
+
+  + InventoryGrid(color: Color, inventory: Inventory)
+}
+
+class InventoryButton {
+  - index: int
+  - buttonColor: Color
+  - inventory: Inventory
+
+  + InventoryButton(index: int, color: Color, inventory: Inventory)
+}
+@enduml

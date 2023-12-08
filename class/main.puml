@@ -1,0 +1,106 @@
+@startuml
+
+class MyApp {
+}
+
+class MyHomePage {
+  - _currentIndex: int
+  - _screens: List<Widget>
+
+  + build(context: BuildContext): Widget
+}
+
+class Animal {
+  - petStatus: String
+  - hungry: int
+  - affection: int
+  - catState: CatState
+
+  + displayInfo(): void
+  + eat(): void
+  + sleep(): void
+  + play(): void
+}
+
+enum CatState {
+  Awake
+  Sleeping
+}
+
+class Cat {
+  - myPet: Animal
+  - currentImage: String
+  - hungerTimer: Timer?
+  - interactionCount: int
+
+  + initState(): void
+  + dispose(): void
+  + _interactWithPet(): void
+  + _feedPet(): void
+  + _playWithPet(): void
+  + _waitForStatusChange(): void
+  + _changeImage(): void
+  + _increaseAffection(value: int): void
+  + build(context: BuildContext): Widget
+}
+
+class Inventory {
+  - _storeName: int
+  - _selectItem: int
+
+  + chooseStoreName(num: int): void
+  + chooseItem(num: int): void
+  + getStoreName(): int
+  + getSelectItem(): int
+}
+
+class InventoryScreen {
+  - inventory: Inventory
+
+  + InventoryScreen()
+}
+
+class InventoryGrid {
+  - buttonColor: Color
+  - inventory: Inventory
+
+  + InventoryGrid(color: Color, inventory: Inventory)
+}
+
+class InventoryButton {
+  - index: int
+  - buttonColor: Color
+  - inventory: Inventory
+
+  + InventoryButton(index: int, color: Color, inventory: Inventory)
+}
+
+class DiaryScreen {
+  - checkBoxValue: bool
+  - checkBox2Value: bool
+  - checkBox3Value: bool
+  - checkBox4Value: bool
+  - totalAmount: int
+  - today: String
+
+  + initState(): void
+  + getDate(): void
+  + build(context: BuildContext): Widget
+  + calculateTotalAmount(): void
+}
+
+class ChechListScreen {
+  - checkBoxValue: bool
+  - checkBox2Value: bool
+  - checkBox3Value: bool
+  - checkBox4Value: bool
+  - totalAmount: int
+  - today: String
+
+  + initState(): void
+  + getDate(): void
+  + build(context: BuildContext): Widget
+  + calculateTotalAmount(): void
+}
+
+@enduml
