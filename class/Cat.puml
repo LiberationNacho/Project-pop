@@ -4,7 +4,6 @@ class Animal {
   - hungry: int
   - affection: int
   - catState: CatState
-
   + displayInfo(): void
   + eat(): void
   + sleep(): void
@@ -19,9 +18,8 @@ enum CatState {
 class Cat {
   - myPet: Animal
   - currentImage: String
-  - hungerTimer: Timer?
+  - hungerTimer: Timer
   - interactionCount: int
-
   + initState(): void
   + dispose(): void
   + _interactWithPet(): void
@@ -32,4 +30,6 @@ class Cat {
   + _increaseAffection(value: int): void
   + build(context: BuildContext): Widget
 }
+
+Animal <-- Cat
 @enduml

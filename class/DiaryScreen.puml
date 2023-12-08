@@ -1,15 +1,11 @@
 @startuml
 class DiaryScreen {
-  - checkBoxValue: bool
-  - checkBox2Value: bool
-  - checkBox3Value: bool
-  - checkBox4Value: bool
-  - totalAmount: int
-  - today: String
-
-  + initState(): void
-  + getDate(): void
+  - _dayDiaryController: TextEditingController
+  - _feelingDiaryController: TextEditingController
   + build(context: BuildContext): Widget
-  + calculateTotalAmount(): void
+  + saveDiary(): void
 }
+
+DiaryScreen --|> StatefulWidget
+DiaryScreen --> TextEditingController
 @enduml

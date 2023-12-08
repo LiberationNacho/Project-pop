@@ -2,7 +2,6 @@
 class Inventory {
   - _storeName: int
   - _selectItem: int
-
   + chooseStoreName(num: int): void
   + chooseItem(num: int): void
   + getStoreName(): int
@@ -11,22 +10,29 @@ class Inventory {
 
 class InventoryScreen {
   - inventory: Inventory
-
-  + InventoryScreen()
+  + InventoryScreen(key: Key?)
+  + build(context: BuildContext): Widget
 }
 
 class InventoryGrid {
   - buttonColor: Color
   - inventory: Inventory
-
-  + InventoryGrid(color: Color, inventory: Inventory)
+  + InventoryGrid(buttonColor: Color, inventory: Inventory)
+  + build(context: BuildContext): Widget
 }
 
 class InventoryButton {
   - index: int
   - buttonColor: Color
   - inventory: Inventory
-
-  + InventoryButton(index: int, color: Color, inventory: Inventory)
+  + InventoryButton(index: int, buttonColor: Color, inventory: Inventory)
+  + build(context: BuildContext): Widget
 }
+
+InventoryScreen --|> StatelessWidget
+InventoryScreen --> Inventory
+InventoryGrid --|> StatelessWidget
+InventoryGrid --> Inventory
+InventoryButton --|> StatelessWidget
+InventoryButton --> Inventory
 @enduml
