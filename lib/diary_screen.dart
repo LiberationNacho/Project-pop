@@ -3,123 +3,78 @@ import 'package:intl/intl.dart';
 
 class DiaryScreen extends StatefulWidget {
   @override
-  _DiaryScreenState createState() => _DiaryScreenState();
+  _DiaryScreen createState() => _DiaryScreen();
 }
 
-class _DiaryScreenState extends State<DiaryScreen> {
-  bool checkBoxValue = false;
-  bool checkBox2Value = false;
-  bool checkBox3Value = false;
-  bool checkBox4Value = false;
-  int totalAmount = 0;
-  String today = "";
-
-  @override
-  void initState() {
-    super.initState();
-    getDate();
-  }
-
-  void getDate(){
-    DateTime now = DateTime.now();
-    today = DateFormat('yyyy년 MM월 dd일').format(now);
-  }
+class _DiaryScreen extends State<DiaryScreen> {
+  TextEditingController _dayDiaryController = TextEditingController();
+  TextEditingController _feelingDiaryController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // Scaffold로 감싸기
+    return Scaffold(
       appBar: AppBar(
         title: Text(
-            today,
+          "일기장",
         ),
-        centerTitle: true,
         backgroundColor: Colors.yellow,
         titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              children: [
-                Checkbox(
-                  value: checkBoxValue,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      checkBoxValue = value!;
-                    });
-                  },
+            // Upper part for writing about the day
+            Expanded(
+              child: TextField(
+                controller: _dayDiaryController,
+                maxLines: null,
+                decoration: InputDecoration(
+                  hintText: '오늘의 일기를 작성하세요...',
+                  border: OutlineInputBorder(),
                 ),
-                Text('일기쓰기 100 Rs'),
-              ],
+              ),
             ),
-            Row(
-              children: [
-                Checkbox(
-                  value: checkBox2Value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      checkBox2Value = value!;
-                    });
-                  },
+            SizedBox(height: 16.0),
+            // Lower part for describing feelings
+            Expanded(
+              child: TextField(
+                controller: _feelingDiaryController,
+                maxLines: null,
+                decoration: InputDecoration(
+                  hintText: '오늘의 감사를 작성하세요...',
+                  border: OutlineInputBorder(),
                 ),
-                Text('산책하기 100 Rs'),
-              ],
+              ),
             ),
-            Row(
-              children: [
-                Checkbox(
-                  value: checkBox3Value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      checkBox3Value = value!;
-                    });
-                  },
-                ),
-                Text('고양이 밥주기 100 Rs'),
-              ],
-            ),
-            Row(
-              children: [
-                Checkbox(
-                  value: checkBox4Value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      checkBox4Value = value!;
-                    });
-                  },
-                ),
-                Text('밥 챙겨먹기 100 Rs'),
-              ],
-            ),
+            SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                calculateTotalAmount();
+                saveDiary(); // 여기에서 일기 저장 등 추가적인 로직을 수행할 수 있습니다.
               },
-              child: Text('Calculate Total'),
+              child: Text('저장'),
             ),
-            Text('Your Selected items are:'),
-            Text('Total Price is: $totalAmount Rs'),
           ],
         ),
       ),
     );
   }
 
-  void calculateTotalAmount() {
-    totalAmount = 0;
-    if (checkBoxValue) {
-      totalAmount += 500;
-    }
-    if (checkBox2Value) {
-      totalAmount += 500;
-    }
-    if (checkBox3Value) {
-      totalAmount += 300;
-    }
-    if (checkBox4Value) {
-      totalAmount += 100;
-    }
-    setState(() {});
+  void saveDiary() {
+    String dayDiaryText = _dayDiaryController.text;
+    String feelingDiaryText = _feelingDiaryController.text;
+
+    // 여기에서 일기를 저장하거나 추가적인 작업을 수행할 수 있습니다.
+    print('오늘의 일기 저장: $dayDiaryText');
+    print('오늘의 기분 저장: $feelingDiaryText');
+
+    // 저장 후 필요에 따라 사용자에게 알림을 주거나 다른 동작을 수행할 수 있습니다.
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: DiaryScreen(),
+  ));
 }

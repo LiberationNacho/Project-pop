@@ -155,7 +155,7 @@ class _Cat extends State<Cat> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              '상호작용 버튼을 눌러보세요',
+              '고양이를 쓰다듬어 주세요',
             ),
             SizedBox(height: 10), // 버튼 위 간격
             // 추가: 동물 상태와 공복지수, 친밀도를 표시하는 Text 위젯

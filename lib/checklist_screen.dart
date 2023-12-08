@@ -1,16 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class ChechListScreen extends StatefulWidget {
-  @override
-  _ChechListScreen createState() => _ChechListScreen();
+class ChecklistItem {
+  final String title;
+  final int price;
+
+  ChecklistItem(this.title, this.price);
 }
 
-class _ChechListScreen extends State<ChechListScreen> {
-  bool checkBoxValue = false;
-  bool checkBox2Value = false;
-  bool checkBox3Value = false;
-  bool checkBox4Value = false;
+class CheckListScreen extends StatefulWidget {
+  @override
+  _CheckListScreenState createState() => _CheckListScreenState();
+}
+
+class _CheckListScreenState extends State<CheckListScreen> {
+  List<ChecklistItem> checklistItems = [
+    ChecklistItem('감정일기 작성', 200),
+    ChecklistItem('엄마랑 전화', 200),
+    ChecklistItem('20분 이상 산책', 100),
+    ChecklistItem('건강한 식사', 200),
+    ChecklistItem('8시간 이상 수면', 200)
+  ];
+
+  List<ChecklistItem> emotion = [
+    ChecklistItem('이유 없는 기분 저하', 0),
+    ChecklistItem('식욕 감퇴', 0),
+    ChecklistItem('삶에 대한 흥미 감소', 0),
+    ChecklistItem('이유없는 불안', 0),
+    ChecklistItem('집중력 저하', 0),
+    ChecklistItem('수면 장애', 0),
+    ChecklistItem('스르로에 대한 죄책감', 0)
+  ];
+
+  List<bool> checkBoxValues = List.filled(5, false);
+  List<bool> emotionCheckBoxValues = List.filled(7, false);
   int totalAmount = 0;
   String today = "";
 
@@ -20,105 +43,99 @@ class _ChechListScreen extends State<ChechListScreen> {
     getDate();
   }
 
-  void getDate(){
+  void getDate() {
     DateTime now = DateTime.now();
     today = DateFormat('yyyy년 MM월 dd일').format(now);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // Scaffold로 감싸기
+    return Scaffold(
       appBar: AppBar(
         title: Text(
           today,
         ),
-        centerTitle: true,
         backgroundColor: Colors.yellow,
         titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                Checkbox(
-                  value: checkBoxValue,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      checkBoxValue = value!;
-                    });
-                  },
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("To-Do List", style: TextStyle(fontSize: 25), ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (int i = 0; i < checklistItems.length; i++)
+                Row(
+                  children: [
+                    Checkbox(
+                      value: checkBoxValues[i],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          checkBoxValues[i] = value!;
+                        });
+                      },
+                    ),
+                    Text(checklistItems[i].title),
+                  ],
                 ),
-                Text('일기쓰기 100 Rs'),
-              ],
+              ElevatedButton(
+                onPressed: () {
+                  calculateTotalAmount();
+                },
+                child: Text('예상 보상'),
+              ),
+              Text('지급 예정 코인: $totalAmount 코인'),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Divider( // Horizontal line between the two sections
+              color: Colors.grey,
+              thickness: 1,
             ),
-            Row(
-              children: [
-                Checkbox(
-                  value: checkBox2Value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      checkBox2Value = value!;
-                    });
-                  },
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("오늘 기분은 어땠나요?", style: TextStyle(fontSize: 25), ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (int i = 0; i < emotion.length; i++)
+                Row(
+                  children: [
+                    Checkbox(
+                      value: emotionCheckBoxValues[i],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          emotionCheckBoxValues[i] = value!;
+                        });
+                      },
+                    ),
+                    Text(emotion[i].title),
+                  ],
                 ),
-                Text('산책하기 100 Rs'),
-              ],
-            ),
-            Row(
-              children: [
-                Checkbox(
-                  value: checkBox3Value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      checkBox3Value = value!;
-                    });
-                  },
-                ),
-                Text('고양이 밥주기 100 Rs'),
-              ],
-            ),
-            Row(
-              children: [
-                Checkbox(
-                  value: checkBox4Value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      checkBox4Value = value!;
-                    });
-                  },
-                ),
-                Text('밥 챙겨먹기 100 Rs'),
-              ],
-            ),
-            ElevatedButton(
-              onPressed: () {
-                calculateTotalAmount();
-              },
-              child: Text('Calculate Total'),
-            ),
-            Text('Your Selected items are:'),
-            Text('Total Price is: $totalAmount Rs'),
-          ],
-        ),
+              ElevatedButton(
+                onPressed: () {
+                },
+                child: Text('오늘 기분 저장'),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 
   void calculateTotalAmount() {
     totalAmount = 0;
-    if (checkBoxValue) {
-      totalAmount += 500;
-    }
-    if (checkBox2Value) {
-      totalAmount += 500;
-    }
-    if (checkBox3Value) {
-      totalAmount += 300;
-    }
-    if (checkBox4Value) {
-      totalAmount += 100;
+    for (int i = 0; i < checklistItems.length; i++) {
+      if (checkBoxValues[i]) {
+        totalAmount += checklistItems[i].price;
+      }
     }
     setState(() {});
   }

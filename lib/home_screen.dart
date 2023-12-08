@@ -20,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
     StoreScreen(),
     InventoryScreen(),
     Cat(),
-    ChechListScreen(),
+    CheckListScreen(),
     DiaryScreen(),
   ];
 
