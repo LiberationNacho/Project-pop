@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class DiaryScreen extends StatefulWidget {
+class ChechListScreen extends StatefulWidget {
   @override
-  _DiaryScreenState createState() => _DiaryScreenState();
+  _ChechListScreen createState() => _ChechListScreen();
 }
 
-class _DiaryScreenState extends State<DiaryScreen> {
+class _ChechListScreen extends State<ChechListScreen> {
   bool checkBoxValue = false;
   bool checkBox2Value = false;
   bool checkBox3Value = false;
@@ -30,7 +30,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
     return Scaffold( // Scaffold로 감싸기
       appBar: AppBar(
         title: Text(
-            today,
+          today,
         ),
         centerTitle: true,
         backgroundColor: Colors.yellow,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_svg/svg.dart';
+import 'dart:math';
 
 enum CatState {
   Awake,
@@ -14,22 +15,22 @@ class Animal {
   CatState catState = CatState.Awake;
 
   void displayInfo() {
-    petStatus = 'Animal info';
+    petStatus = '교감 중...';
     print(petStatus);
   }
 
   void eat() {
-    petStatus = 'Animal is eating';
+    petStatus = '먹는 중...';
     print(petStatus);
   }
 
   void sleep() {
-    petStatus = 'Animal is sleeping';
+    petStatus = '자는 중...';
     print(petStatus);
   }
 
   void play() {
-    petStatus = 'Animal is playing';
+    petStatus = '노는 중...';
     print(petStatus);
   }
 }
@@ -43,7 +44,7 @@ class Cat extends StatefulWidget {
 
 class _Cat extends State<Cat> {
   Animal myPet = Animal();
-  String currentImage = 'images/popcat.jpg';
+  String currentImage = 'assets/cat_motions/cat1.svg';
   Timer? hungerTimer;
   int interactionCount = 0;
 
@@ -87,10 +88,10 @@ class _Cat extends State<Cat> {
     setState(() {
       myPet.displayInfo();
       _increaseAffection(1);
+      _waitForStatusChange();
     });
   }
 
-  // 동물에게 먹이 주기
   void _feedPet() {
     setState(() {
       myPet.eat();
@@ -99,6 +100,7 @@ class _Cat extends State<Cat> {
         myPet.hungry = 100;
       }
       _increaseAffection(1);
+      _waitForStatusChange();
     });
   }
 
@@ -107,15 +109,26 @@ class _Cat extends State<Cat> {
     setState(() {
       myPet.play();
       _increaseAffection(1);
+      _waitForStatusChange();
+    });
+  }
+
+  void _waitForStatusChange() {
+    Future.delayed(Duration(seconds: 5), () {
+      setState(() {
+        myPet.petStatus = '';
+      });
     });
   }
 
   // 이미지 변경 메서드
   void _changeImage() {
     setState(() {
-      currentImage = (currentImage == 'images/popcat.jpg')
-          ? 'images/popcat2.jpg'
-          : 'images/popcat.jpg';
+      // Generate a random number between 1 and 8
+      int randomCatNumber = Random().nextInt(8) + 1;
+
+      // Form the path for the random cat image
+      currentImage = 'assets/cat_motions/cat$randomCatNumber.svg';
     });
     _increaseAffection(1);
   }
@@ -135,26 +148,27 @@ class _Cat extends State<Cat> {
       appBar: AppBar(
         title: Text("야옹"),
         backgroundColor: Colors.yellow,
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Click the buttons to interact with your pet:',
+              '상호작용 버튼을 눌러보세요',
             ),
             SizedBox(height: 10), // 버튼 위 간격
             // 추가: 동물 상태와 공복지수, 친밀도를 표시하는 Text 위젯
             Text(myPet.petStatus),
-            Text('Hungry: ${myPet.hungry}'),
-            Text('Affection: ${myPet.affection}'),
-            Text('Cat State: ${myPet.catState}'),
+            Text('포만감: ${myPet.hungry}'),
+            Text('친밀도: ${myPet.affection}'),
+            Text('상태: ${myPet.catState == CatState.Awake ? "깨어있음" : "자는 중"}'),
             SizedBox(height: 20), // 이미지와 버튼 간 간격
             // GestureDetector를 사용하여 이미지 클릭 감지
             GestureDetector(
               onTap: _changeImage,
               child: SvgPicture.asset(
-                'assets/cat_motions/cat1.svg', // 실제 SVG 파일의 경로
+                currentImage, // 실제 SVG 파일의 경로
                 width: 100,
               )
             ),

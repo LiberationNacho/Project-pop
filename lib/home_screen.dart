@@ -4,6 +4,7 @@ import 'store_screen.dart';
 import 'inventory_screen.dart';
 import 'diary_screen.dart';
 import 'cat.dart';
+import 'checklist_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
     StoreScreen(),
     InventoryScreen(),
     Cat(),
-    DiaryScreen(),
+    ChechListScreen(),
     DiaryScreen(),
   ];
 
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
               size: 30,
               color: Colors.white, // 아이콘의 색상
             ),
-            label: 'Store',
+            label: '상점',
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -51,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
               size: 30,
               color: Colors.white, // 아이콘의 색상
             ),
-            label: 'Inventory',
+            label: '가방',
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               size: 30,
               color: Colors.white, // 아이콘의 색상
             ),
-            label: 'Cat',
+            label: '홈',
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -67,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
               size: 30,
               color: Colors.white, // 아이콘의 색상
             ),
-            label: 'CheckList',
+            label: '체크리스트',
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -75,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
               size: 30,
               color: Colors.white, // 아이콘의 색상
             ),
-            label: 'Diary',
+            label: '일기',
           ),
         ],
       ),
