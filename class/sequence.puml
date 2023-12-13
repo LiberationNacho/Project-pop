@@ -1,0 +1,56 @@
+@startuml
+actor User
+
+User -> MyApp: create
+activate MyApp
+
+User -> MyApp: build(context)
+MyApp -> MyHomePage: create
+activate MyHomePage
+
+User -> MyHomePage: build(context)
+MyHomePage -> _MyHomePageState: create
+activate _MyHomePageState
+
+_User -> _MyHomePageState: createState()
+_MyHomePageState --> _MyHomePageState: return state
+
+_User -> _MyHomePageState: build(context)
+_MyHomePageState -> _MyHomePageState: initialize state
+_MyHomePageState -> _MyHomePageState: create screens
+_MyHomePageState --> MyHomePage: return widget
+
+_User -> MyHomePage: build(context)
+MyHomePage -> Cat: create
+activate Cat
+
+_User -> Cat: initState()
+Cat -> Cat: initialize pet, timers, etc.
+
+_User -> Cat: build(context)
+Cat -> Cat: display pet UI
+Cat -> Cat: start hunger timer
+Cat --> MyHomePage: return pet widget
+
+_User -> MyApp: display UI
+deactivate MyApp
+
+_User -> MyHomePage: display UI
+deactivate MyHomePage
+
+_User -> Cat: interactWithPet()
+Cat -> Cat: handle interaction
+Cat -> Cat: change affection, image, etc.
+
+_User -> Cat: feedPet()
+Cat -> Cat: handle feeding
+Cat -> Cat: change hunger, image, etc.
+
+_User -> Cat: playWithPet()
+Cat -> Cat: handle playing
+Cat -> Cat: change affection, image, etc.
+
+_User -> Cat: dispose()
+Cat -> Cat: stop timers, clean up
+deactivate Cat
+@enduml
