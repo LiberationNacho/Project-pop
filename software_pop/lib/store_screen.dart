@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Store {
   int _storeName = 0; // 0 = 옷, 1 = 가구, 2 = 음악 상점
@@ -23,8 +24,10 @@ class Store {
   }
 }
 
-class StoreUI extends StatelessWidget {
-  final Store store = Store(); // Store 객체를 멤버 변수로 선언
+class StoreScreen extends StatelessWidget {
+  final Store store = Store();
+
+  StoreScreen({super.key}); // Store 객체를 멤버 변수로 선언
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +36,16 @@ class StoreUI extends StatelessWidget {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Store UI'),
+            backgroundColor: Colors.yellow,
+            titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
+            title: Text('상점'),
             bottom: TabBar(
               tabs: [
                 Tab(text: '옷'),
                 Tab(text: '가구'),
                 Tab(text: '음악 상점'),
               ],
+              labelColor: Colors.black,
               onTap: (index) {
                 // 탭이 클릭되었을 때 chooseStoreName 함수 호출
                 store.chooseStoreName(index);
@@ -93,7 +99,7 @@ class StoreButton extends StatelessWidget {
         // 버튼이 눌렸을 때 실행되는 코드
         int storeCheck = store.getStoreName(); // inventory 객체 사용
         switch(storeCheck)
-        {
+            {
           case 0:
             print("옷 탭의 $index 번 버튼을 누르셨습니다.");
             break;
@@ -112,15 +118,11 @@ class StoreButton extends StatelessWidget {
         color: buttonColor,
         child: Center(
           child: Text(
-            'Item $index',
+            '상품 $index',
             style: TextStyle(color: Colors.white),
           ),
         ),
       ),
     );
   }
-}
-
-void main() {
-  runApp(StoreUI());
 }
