@@ -14,14 +14,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _currentIndex = 2;
+  int _currentIndex = 2; // 처음에 앱이 실행되었을 때 가장 먼저 보여질 화면을 _screens 중 어떤 것으로 할 것인가?
 
+  // 하단 바 구성
   final List<Widget> _screens = [
-    StoreScreen(),
-    InventoryScreen(),
-    Cat(),
-    CheckListScreen(),
-    DiaryScreen(),
+    StoreScreen(), // 0
+    InventoryScreen(), // 1
+    Cat(), // 2
+    CheckListScreen(), // 3
+    DiaryScreen(), // 4
   ];
 
   @override
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            _currentIndex = index; // 하단 바를 누를 때 마다 _currentIndex의 값이 변하면서 화면이 전환됨
           });
         },
         backgroundColor: Colors.yellow, // 바텀 네비게이션 바의 배경색

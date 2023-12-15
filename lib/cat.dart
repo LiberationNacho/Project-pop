@@ -113,6 +113,7 @@ class _Cat extends State<Cat> {
     });
   }
 
+  // 고양이와 놀아준 후 일정시간 뒤 고양이 상태 초기화를 위한 함수
   void _waitForStatusChange() {
     Future.delayed(Duration(seconds: 5), () {
       setState(() {
@@ -122,6 +123,7 @@ class _Cat extends State<Cat> {
   }
 
   // 이미지 변경 메서드
+  // 고양이를 누를 때 마다 매번 랜덤으로 고양이 사진이 바뀜
   void _changeImage() {
     setState(() {
       // Generate a random number between 1 and 8
@@ -130,7 +132,7 @@ class _Cat extends State<Cat> {
       // Form the path for the random cat image
       currentImage = 'assets/cat_motions/cat$randomCatNumber.svg';
     });
-    _increaseAffection(1);
+    _increaseAffection(1); // 상호작용 정도가 1 상승
   }
 
   // 친밀도 증가 메서드, 버튼 클릭의 합이 50이상이면 친밀도 1증가

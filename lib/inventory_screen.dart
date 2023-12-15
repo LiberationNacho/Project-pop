@@ -32,7 +32,7 @@ class InventoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 3,
+        length: 3, // 카테고리 탭 수
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.yellow,
@@ -64,6 +64,8 @@ class InventoryScreen extends StatelessWidget {
   }
 }
 
+// 상품 진열장 구성을 어떻게 할지 정하는 클래스
+// itemCount와 crossAxisCount를 이용해서 진열할 상품 수 조절 가능
 class InventoryGrid extends StatelessWidget {
   final Color buttonColor;
   final Inventory inventory; // Inventory 객체를 전달받도록 수정
@@ -74,16 +76,18 @@ class InventoryGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+        crossAxisCount: 3,//가로로 몇개를 둘 것인가?
       ),
       itemBuilder: (BuildContext context, int index) {
         return InventoryButton(index, buttonColor, inventory); // InventoryButton에 Inventory 객체 전달
       },
-      itemCount: 15,
+      itemCount: 15,// 총 몇개의 상품을 진열할 것인가?
     );
   }
 }
 
+// 각 상품 자체가 버튼이됨
+// 버튼의 이미지가 옷이나 가구, 음악 등이 되는 것
 class InventoryButton extends StatelessWidget {
   final int index;
   final Color buttonColor;

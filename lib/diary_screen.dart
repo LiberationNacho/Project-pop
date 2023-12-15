@@ -7,8 +7,8 @@ class DiaryScreen extends StatefulWidget {
 }
 
 class _DiaryScreen extends State<DiaryScreen> {
-  TextEditingController _dayDiaryController = TextEditingController();
-  TextEditingController _feelingDiaryController = TextEditingController();
+  TextEditingController _dayDiaryController = TextEditingController(); // 매일 작성하는 일기
+  TextEditingController _feelingDiaryController = TextEditingController(); // 감사일기
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +61,7 @@ class _DiaryScreen extends State<DiaryScreen> {
     );
   }
 
+  // 작성한 내용을 저장하는데 쓰임. 따로 데이터베이스를 구현하지 않았기 때문에 실제로 저장되지는 않음
   void saveDiary() {
     String dayDiaryText = _dayDiaryController.text;
     String feelingDiaryText = _feelingDiaryController.text;
@@ -71,10 +72,4 @@ class _DiaryScreen extends State<DiaryScreen> {
 
     // 저장 후 필요에 따라 사용자에게 알림을 주거나 다른 동작을 수행할 수 있습니다.
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: DiaryScreen(),
-  ));
 }

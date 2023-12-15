@@ -5,6 +5,7 @@ void main() {
   runApp(const MyApp());
 }
 
+//앱을 빌드하는데 쓰이는 메인 코드
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
