@@ -1,4 +1,4 @@
-# software-pop
+# Project-pop
 
 
 **1. 기본 개요***
