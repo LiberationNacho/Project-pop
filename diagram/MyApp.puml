@@ -1,0 +1,13 @@
+@startuml
+class MyApp {
+  - key: super.key
+  + build(context: BuildContext): Widget
+}
+
+class MyHomePage {
+  <<const>>
+  + build(BuildContext): Widget
+}
+
+MyApp -->|home| MyHomePage
+@enduml

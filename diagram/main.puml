@@ -1,0 +1,165 @@
+@startuml
+class MyApp {
+  - key: super.key
+  + build(context: BuildContext): Widget
+}
+
+class MyHomePage {
+  <<const>>
+  + build(BuildContext): Widget
+}
+
+class MyApp extends StatelessWidget {
+  - _currentIndex: int
+  - _screens: List<Widget>
+  + MyHomePage({Key? key})
+  + createState(): _MyHomePageState
+  + build(context: BuildContext): Widget
+}
+
+class _MyHomePageState {
+  - _currentIndex: int
+  - _screens: List<Widget>
+  + build(context: BuildContext): Widget
+}
+
+class Animal {
+  - petStatus: String
+  - hungry: int
+  - affection: int
+  - catState: CatState
+  + displayInfo(): void
+  + eat(): void
+  + sleep(): void
+  + play(): void
+}
+
+enum CatState {
+  Awake
+  Sleeping
+}
+
+class Cat extends StatefulWidget {
+  - myPet: Animal
+  - currentImage: String
+  - hungerTimer: Timer
+  - interactionCount: int
+  + initState(): void
+  + dispose(): void
+  + _interactWithPet(): void
+  + _feedPet(): void
+  + _playWithPet(): void
+  + _waitForStatusChange(): void
+  + _changeImage(): void
+  + _increaseAffection(value: int): void
+  + build(context: BuildContext): Widget
+}
+
+class ChecklistItem {
+  - title: String
+  - price: int
+  + ChecklistItem(title: String, price: int)
+}
+
+class CheckListScreen extends StatefulWidget {
+  - checklistItems: List<ChecklistItem>
+  - emotion: List<ChecklistItem>
+  - checkBoxValues: List<bool>
+  - emotionCheckBoxValues: List<bool>
+  - totalAmount: int
+  - today: String
+  + initState(): void
+  + getDate(): void
+  + build(context: BuildContext): Widget
+  + calculateTotalAmount(): void
+}
+
+class DiaryScreen extends StatefulWidget {
+  - _dayDiaryController: TextEditingController
+  - _feelingDiaryController: TextEditingController
+  + build(context: BuildContext): Widget
+  + saveDiary(): void
+}
+
+class Inventory {
+  - _storeName: int
+  - _selectItem: int
+  + chooseStoreName(num: int): void
+  + chooseItem(num: int): void
+  + getStoreName(): int
+  + getSelectItem(): int
+}
+
+class InventoryScreen extends StatelessWidget {
+  - inventory: Inventory
+  + InventoryScreen(key: Key?)
+  + build(context: BuildContext): Widget
+}
+
+class InventoryGrid extends StatelessWidget {
+  - buttonColor: Color
+  - inventory: Inventory
+  + InventoryGrid(buttonColor: Color, inventory: Inventory)
+  + build(context: BuildContext): Widget
+}
+
+class InventoryButton extends StatelessWidget {
+  - index: int
+  - buttonColor: Color
+  - inventory: Inventory
+  + InventoryButton(index: int, buttonColor: Color, inventory: Inventory)
+  + build(context: BuildContext): Widget
+}
+
+class Store {
+  - _storeName: int
+  - _selectItem: int
+  + chooseStoreName(num: int): void
+  + chooseItem(num: int): void
+  + getStoreName(): int
+  + getSelectItem(): int
+}
+
+class StoreScreen extends StatelessWidget {
+  - store: Store
+  + StoreScreen(key: Key?)
+  + build(context: BuildContext): Widget
+}
+
+class StoreGrid extends StatelessWidget {
+  - buttonColor: Color
+  - store: Store
+  + StoreGrid(buttonColor: Color, store: Store)
+  + build(context: BuildContext): Widget
+}
+
+class StoreButton extends StatelessWidget {
+  - index: int
+  - buttonColor: Color
+  - store: Store
+  + StoreButton(index: int, buttonColor: Color, store: Store)
+  + build(context: BuildContext): Widget
+}
+
+MyApp --> MyHomePage
+MyHomePage --|> StatefulWidget
+MyHomePage --> _screens
+Animal <-- Cat
+CheckListScreen --|> StatefulWidget
+CheckListScreen --> ChecklistItem
+DiaryScreen --|> StatefulWidget
+DiaryScreen --> TextEditingController
+InventoryScreen --|> StatelessWidget
+InventoryScreen --> Inventory
+InventoryGrid --|> StatelessWidget
+InventoryGrid --> Inventory
+InventoryButton --|> StatelessWidget
+InventoryButton --> Inventory
+StoreScreen --|> StatelessWidget
+StoreScreen --> Store
+StoreGrid --|> StatelessWidget
+StoreGrid --> Store
+StoreButton --|> StatelessWidget
+StoreButton --> Store
+
+@enduml

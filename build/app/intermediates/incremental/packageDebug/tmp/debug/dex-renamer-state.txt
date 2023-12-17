@@ -1,0 +1,4 @@
+#Fri Dec 08 15:59:56 KST 2023
+base.0=C\:\\software-pop\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

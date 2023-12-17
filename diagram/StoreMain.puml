@@ -1,0 +1,38 @@
+@startuml
+class Store {
+  - _storeName: int
+  - _selectItem: int
+  + chooseStoreName(num: int): void
+  + chooseItem(num: int): void
+  + getStoreName(): int
+  + getSelectItem(): int
+}
+
+class StoreScreen extends StatelessWidget {
+  - store: Store
+  + StoreScreen(key: Key?)
+  + build(context: BuildContext): Widget
+}
+
+class StoreGrid extends StatelessWidget {
+  - buttonColor: Color
+  - store: Store
+  + StoreGrid(buttonColor: Color, store: Store)
+  + build(context: BuildContext): Widget
+}
+
+class StoreButton extends StatelessWidget {
+  - index: int
+  - buttonColor: Color
+  - store: Store
+  + StoreButton(index: int, buttonColor: Color, store: Store)
+  + build(context: BuildContext): Widget
+}
+StoreScreen --|> StatelessWidget
+StoreGrid --|> StatelessWidget
+StoreButton --|> StatelessWidget
+StoreScreen --> Store
+StoreGrid --> Store
+StoreButton --> Store
+
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class DiaryScreen {
+  - _dayDiaryController: TextEditingController
+  - _feelingDiaryController: TextEditingController
+  + build(context: BuildContext): Widget
+  + saveDiary(): void
+}
+
+DiaryScreen --|> StatefulWidget
+DiaryScreen --> TextEditingController
+@enduml

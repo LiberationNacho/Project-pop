@@ -1,0 +1,22 @@
+@startuml
+class MyHomePage {
+  - _currentIndex: int
+  - _screens: List<Widget>
+  + MyHomePage({Key? key})
+  + createState(): _MyHomePageState
+  + build(context: BuildContext): Widget
+}
+
+class _MyHomePageState {
+  - _currentIndex: int
+  - _screens: List<Widget>
+  + build(context: BuildContext): Widget
+}
+
+MyHomePage --|> StatefulWidget
+MyHomePage -->|_screens| StoreScreen
+MyHomePage -->|_screens| InventoryScreen
+MyHomePage -->|_screens| Cat
+MyHomePage -->|_screens| CheckListScreen
+MyHomePage -->|_screens| DiaryScreen
+@enduml
