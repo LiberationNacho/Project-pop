@@ -1,0 +1,32 @@
+@startuml
+actor User
+
+User -> MyHomePage: Launch App
+activate MyHomePage
+
+MyHomePage -> Cat: Show Cat Tab
+activate Cat
+
+User -> Cat: Interact with Cat
+activate Cat
+Cat -> Cat: DisplayInfo()
+Cat -> Cat: Increase Affection
+Cat -> Cat: WaitForStatusChange()
+Cat --> User: Display cat status
+
+User -> Cat: Feed Cat
+activate Cat
+Cat -> Cat: Eat()
+Cat -> Cat: Increase Hungry
+Cat -> Cat: Increase Affection
+Cat -> Cat: WaitForStatusChange()
+Cat --> User: Display cat status
+
+User -> Cat: Play with Cat
+activate Cat
+Cat -> Cat: Play()
+Cat -> Cat: Increase Affection
+Cat -> Cat: WaitForStatusChange()
+Cat --> User: Display cat status
+
+@enduml

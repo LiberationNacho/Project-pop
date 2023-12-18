@@ -1,0 +1,42 @@
+@startuml
+class Inventory {
+  - _storeName: int
+  - _selectItem: int
+  + chooseStoreName(num: int): void
+  + chooseItem(num: int): void
+  + getStoreName(): int
+  + getSelectItem(): int
+}
+
+class InventoryScreen {
+  - inventory: Inventory
+  + build(BuildContext context): Widget
+}
+
+class InventoryGrid {
+  - buttonColor: Color
+  - inventory: Inventory
+  + build(BuildContext context): Widget
+}
+
+class InventoryButton {
+  - index: int
+  - buttonColor: Color
+  - inventory: Inventory
+  + build(BuildContext context): Widget
+}
+
+class MyHomePage {
+  - _currentIndex: int
+  - _screens: List<Widget>
+  + build(BuildContext context): Widget
+}
+
+MyHomePage *-- InventoryScreen
+
+InventoryScreen -- Inventory
+InventoryScreen -- InventoryGrid
+
+InventoryGrid -- InventoryButton
+InventoryGrid -- Inventory
+@enduml

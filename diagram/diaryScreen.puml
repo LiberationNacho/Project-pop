@@ -1,0 +1,16 @@
+@startuml
+class DiaryScreen {
+  - _dayDiaryController: TextEditingController
+  - _feelingDiaryController: TextEditingController
+  + build(BuildContext context): Widget
+  + saveDiary(): void
+}
+
+class MyHomePage {
+  - _currentIndex: int
+  - _screens: List<Widget>
+  + build(BuildContext context): Widget
+}
+
+MyHomePage *-- DiaryScreen
+@enduml

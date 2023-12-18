@@ -1,0 +1,22 @@
+@startuml
+actor User
+
+User -> MyHomePage: Launch App
+activate MyHomePage
+
+User -> StoreScreen: Tap on '상점' Tab
+activate StoreScreen
+
+User -> InventoryScreen: Tap on '가방' Tab
+activate InventoryScreen
+
+User -> Cat: Tap on '홈' Tab
+activate Cat
+
+User -> CheckListScreen: Tap on '체크리스트' Tab
+activate CheckListScreen
+
+User -> DiaryScreen: Tap on '일기' Tab
+activate DiaryScreen
+
+@enduml

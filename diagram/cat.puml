@@ -1,0 +1,42 @@
+@startuml
+
+class MyHomePage {
+  - _currentIndex: int
+  - _screens: List<Widget>
+  + build(BuildContext context): Widget
+}
+
+class Animal {
+  - petStatus: String
+  - hungry: int
+  - affection: int
+  - catState: CatState
+  + displayInfo(): void
+  + eat(): void
+  + sleep(): void
+  + play(): void
+}
+
+enum CatState {
+  Awake
+  Sleeping
+}
+
+class Cat {
+  - myPet: Animal
+  - currentImage: String
+  - hungerTimer: Timer
+  - interactionCount: int
+  + initState(): void
+  + dispose(): void
+  + _interactWithPet(): void
+  + _feedPet(): void
+  + _playWithPet(): void
+  + _waitForStatusChange(): void
+  + _changeImage(): void
+  + _increaseAffection(value: int): void
+  # build(BuildContext context): Widget
+}
+
+MyHomePage *-- Cat
+@enduml

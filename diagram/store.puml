@@ -1,0 +1,42 @@
+@startuml
+class Store {
+  - _storeName: int
+  - _selectItem: int
+  + chooseStoreName(num: int): void
+  + chooseItem(num: int): void
+  + getStoreName(): int
+  + getSelectItem(): int
+}
+
+class StoreScreen {
+  - store: Store
+  + build(BuildContext context): Widget
+}
+
+class StoreGrid {
+  - buttonColor: Color
+  - store: Store
+  + build(BuildContext context): Widget
+}
+
+class StoreButton {
+  - index: int
+  - buttonColor: Color
+  - store: Store
+  + build(BuildContext context): Widget
+}
+
+class MyHomePage {
+  - _currentIndex: int
+  - _screens: List<Widget>
+  + build(BuildContext context): Widget
+}
+
+MyHomePage *-- StoreScreen
+
+StoreScreen -- Store
+StoreScreen -- StoreGrid
+
+StoreGrid -- StoreButton
+StoreGrid -- Store
+@enduml

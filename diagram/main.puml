@@ -1,0 +1,147 @@
+@startuml
+
+class ChecklistItem {
+  +title: String
+  +price: int
+  {method} +ChecklistItem(title: String, price: int)
+}
+
+class CheckListScreen {
+  +checklistItems: List<ChecklistItem>
+  +emotion: List<ChecklistItem>
+  +checkBoxValues: List<bool>
+  +emotionCheckBoxValues: List<bool>
+  +totalAmount: int
+  +today: String
+  {method} +initState()
+  {method} +getDate()
+  {method} +build(context: BuildContext): Widget
+  {method} +calculateTotalAmount()
+}
+
+class DiaryScreen {
+  +_dayDiaryController: TextEditingController
+  +_feelingDiaryController: TextEditingController
+  {method} +build(context: BuildContext): Widget
+  {method} +saveDiary()
+}
+
+class Inventory {
+  -_storeName: int
+  -_selectItem: int
+  {method} +chooseStoreName(num: int)
+  {method} +chooseItem(num: int)
+  {method} +getStoreName(): int
+  {method} +getSelectItem(): int
+}
+
+class InventoryScreen {
+  +inventory: Inventory
+  {method} +build(context: BuildContext): Widget
+}
+
+class InventoryGrid {
+  +buttonColor: Color
+  +inventory: Inventory
+  {method} +build(context: BuildContext): Widget
+}
+
+class InventoryButton {
+  +index: int
+  +buttonColor: Color
+  +inventory: Inventory
+  {method} +build(context: BuildContext): Widget
+}
+
+class Store {
+  -_storeName: int
+  -_selectItem: int
+  {method} +chooseStoreName(num: int)
+  {method} +chooseItem(num: int)
+  {method} +getStoreName(): int
+  {method} +getSelectItem(): int
+}
+
+class StoreScreen {
+  +store: Store
+  {method} +build(context: BuildContext): Widget
+}
+
+class StoreGrid {
+  +buttonColor: Color
+  +store: Store
+  {method} +build(context: BuildContext): Widget
+}
+
+class StoreButton {
+  +index: int
+  +buttonColor: Color
+  +store: Store
+  {method} +build(context: BuildContext): Widget
+}
+
+class Animal {
+  +petStatus: String
+  +hungry: int
+  +affection: int
+  +catState: CatState
+  {method} +displayInfo()
+  {method} +eat()
+  {method} +sleep()
+  {method} +play()
+}
+
+enum CatState {
+  Awake
+  Sleeping
+}
+
+class Cat {
+  +myPet: Animal
+  +currentImage: String
+  -hungerTimer: Timer
+  +interactionCount: int
+  {method} +initState()
+  {method} +dispose()
+  {method} +_interactWithPet()
+  {method} +_feedPet()
+  {method} +_playWithPet()
+  {method} +_waitForStatusChange()
+  {method} +_changeImage()
+  {method} +_increaseAffection(value: int)
+  {method} +build(context: BuildContext): Widget
+}
+
+class MyHomePage {
+  -_currentIndex: int
+  -_screens: List<Widget>
+  {method} +build(context: BuildContext): Widget
+}
+
+class MyApp {
+  {method} +build(context: BuildContext): Widget
+}
+
+MyHomePage *-- CheckListScreen
+MyHomePage *-- InventoryScreen
+MyHomePage *-- Cat
+MyHomePage *-- StoreScreen
+MyHomePage *-- DiaryScreen
+
+CheckListScreen -- ChecklistItem
+
+InventoryScreen -- Inventory
+InventoryScreen -- InventoryGrid
+
+InventoryGrid -- InventoryButton
+InventoryGrid -- Inventory
+
+StoreScreen -- Store
+StoreScreen -- StoreGrid
+
+StoreGrid -- StoreButton
+StoreGrid -- Store
+
+Cat -- Animal
+
+@enduml

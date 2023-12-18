@@ -1,0 +1,29 @@
+@startuml
+class ChecklistItem {
+  - title: String
+  - price: int
+}
+
+class CheckListScreen {
+  - checklistItems: List<ChecklistItem>
+  - emotion: List<ChecklistItem>
+  - checkBoxValues: List<bool>
+  - emotionCheckBoxValues: List<bool>
+  - totalAmount: int
+  - today: String
+  + initState(): void
+  + getDate(): void
+  + build(BuildContext context): Widget
+  + calculateTotalAmount(): void
+}
+
+class MyHomePage {
+  - _currentIndex: int
+  - _screens: List<Widget>
+  + build(BuildContext context): Widget
+}
+
+MyHomePage *-- CheckListScreen
+
+CheckListScreen -- ChecklistItem
+@enduml
