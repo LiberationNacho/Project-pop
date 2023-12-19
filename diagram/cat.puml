@@ -39,4 +39,6 @@ class Cat {
 }
 
 MyHomePage *-- Cat
+Cat -- Animal
+
 @enduml
